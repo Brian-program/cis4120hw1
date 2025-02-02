@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, initial-scale=1.0">
+    <title>Weather App</title>
+    <script>
+        function showForecast(type) {
+            document.getElementById('today-forecast').classList.add('hidden');
+            document.getElementById('future-forecast').classList.add('hidden');
+            document.getElementById('today-btn').classList.remove('active');
+            document.getElementById('future-btn').classList.remove('active');
+            
+            if (type === 'today') {
+                document.getElementById('today-forecast').classList.remove('hidden');
+                document.getElementById('today-btn').classList.add('active');
+            } else {
+                document.getElementById('future-forecast').classList.remove('hidden');
+                document.getElementById('future-btn').classList.add('active');
+            }
+        }
+
+        function togglePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="weather-container">
+        <div class="settings-icon" onclick="togglePopup()">⚙️</div>
+        <div class="icon">☀️</div>
+        <div class="temperature">69°</div>
+        <div class="details">
+            <div>Feels Like<br>72°</div>
+            <div>Rain Chance<br>01%</div>
+        </div>
+        <div class="buttons">
+            <button id="today-btn" class="button active" onclick="showForecast('today')">Today</button>
+            <button id="future-btn" class="button" onclick="showForecast('future')">Future</button>
+        </div>
+        
+        <table id="today-forecast" class="forecast">
+            <tr><th>Time</th><th>Temp</th><th>Forecast</th></tr>
+            <tr><td>6pm</td><td>66°</td><td>☀️</td></tr>
+            <tr><td>7pm</td><td>60°</td><td>☁️</td></tr>
+            <tr><td>8pm</td><td>61°</td><td>☁️</td></tr>
+            <tr><td>9pm</td><td>63°</td><td>☁️</td></tr>
+            <tr><td>10pm</td><td>62°</td><td>☁️</td></tr>
+            <tr><td>11pm</td><td>61°</td><td>☁️</td></tr>
+            <tr><td>12am</td><td>59°</td><td>☁️</td></tr>
+            <tr><td>1am</td><td>58°</td><td>☁️</td></tr>
+            <tr><td>2am</td><td>57°</td><td>☁️</td></tr>
+        </table>
+        
+        <table id="future-forecast" class="forecast hidden">
+            <tr><th>Day</th><th>Temp</th><th>Forecast</th></tr>
+            <tr><td>Today</td><td>69°</td><td>☀️</td></tr>
+            <tr><td>Tomorrow</td><td>68°</td><td>☀️</td></tr>
+            <tr><td>2 Days</td><td>67°</td><td>☀️</td></tr>
+            <tr><td>3 Days</td><td>66°</td><td>☀️</td></tr>
+            <tr><td>4 Days</td><td>65°</td><td>☀️</td></tr>
+            <tr><td>5 Days</td><td>64°</td><td>☀️</td></tr>
+            <tr><td>6 Days</td><td>63°</td><td>☀️</td></tr>
+            <tr><td>7 Days</td><td>62°</td><td>☀️</td></tr>
+        </table>
+    </div>
+
+    <div id="popup" class="popup">
+        <span class="close" onclick="togglePopup()">&times;</span>
+        <p>Enter location (static popup):</p>
+        <input type="text" placeholder="City or ZIP Code">
+    </div>
+</body>
+</html>
